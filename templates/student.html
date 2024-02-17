@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobiz</title>
+    <link href="static/css/style.css" rel="stylesheet"></link>
+ </head>
+<body class="bg-light">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a class="active" href="logout">Logout</a></li>
+        <li style="float:right"><a class="active" >Hi {{name}}!</a></li>
+        
+      </ul>
+
+      <div class="banne2">
+        <h2>Welcome,  {{name}} </h2>
+        <p>This is Student page</p>
+       </div>
+    
+</body>
+</html>

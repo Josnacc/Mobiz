@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center">User Registration</h2>
+                <div class="card">
+                    <div>
+                        {% for message in messages %}
+                        <p class="text-danger">{{message}}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="card-body">
+                        <form  method="post" action="register" onsubmit="return validateForm()">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Role:</label>
+                                <select class="form-control" id="role" name="role" >
+                                    <option value="select">Select</option>
+                                    <option value="student">Student</option>
+                                    <option value="staff">Staff</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="editor">Editor</option>
+                                   
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country:</label>
+                                <input type="text" class="form-control" id="country" name="country" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nationality">Nationality:</label>
+                                <input type="text" class="form-control" id="nationality" name="nationality" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mobile">Mobile:</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile" pattern="[1-9]{1}[0-9]{9}" title="Enter 10 digit mobile number" >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" minlength="6" >
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function validateForm() {
+            var name=document.getElementById('name').value;  
+            var role=document.getElementById('role').value;
+            var country=document.getElementById('country').value;  
+            var nationality=document.getElementById('nationality').value;
+            var mobile=document.getElementById('mobile').value;
+            var regx = /^[6-9]\d{9}$/ ;
+            var password=document.getElementById('password').value;  
+            var email = document.getElementById('email').value;  
+            if (name==null || name==""){  
+              alert("Name can't be blank");  
+              return false;  
+            }
+            else if(password.length<6){  
+              alert("Password must be at least 6 characters long.");  
+              return false;  
+            }
+            else if(role==""){
+                alert("Role can't be blank")
+                return false; 
+            }  
+            else if(country==""){
+                alert("Country can't be blank")
+                return false; 
+            }  
+            else if(nationality==""){
+                alert("Nationality can't be blank")
+                return false; 
+            }  
+            
+            else if(mobile=="" || !regx.test(mobile)){
+                alert('Please enter a valid number');
+                return false; 
+            }
+                
+           
+            else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+
+          
+            return true;
+        }
+    </script>
+</body>
+</html>

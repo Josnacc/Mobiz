@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobiz</title>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css"></link>
+</head>
+<body class="bg-light">
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li style="float:right"><a class="active" href="register">Register</a></li>
+        <li style="float:right"><a class="active" href="login">Login</a></li>
+    </ul>
+
+   <div class="banner">
+    <h1>Welcome to Mobiz!</h1>
+    <p>Choose your role</p>
+   </div>
+    {% comment %} <h2>Welcome,  {{name}}</h2>
+    <p>This is Editor page</p> {% endcomment %}
+   
+</body>
+</html>
